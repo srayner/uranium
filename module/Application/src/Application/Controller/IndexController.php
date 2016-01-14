@@ -43,24 +43,34 @@ class IndexController extends AbstractActionController
         $githubAccountName = $this->getServiceLocator()->get('config')['github_account_name'];
         $githubFullName = $this->getServiceLocator()->get('config')['github_full_name'];
         
-        $client = new Client('https://api.github.com/users/' . $gitAccountName . '/events/public', $config);
+        $client = new Client('https://api.github.com/users/' . $githubAccountName . '/events/public', $config);
         $response = $client->send();
         
         $git = json_decode($response->getBody());
         foreach($git as $event) {
             if ($event->type == 'PushEvent') {
                 $url = "https://github.com/" . $event->repo->name;
-                echo $githubFullName . ' pushed code to <a href="' . $url . '">' . $event->repo->name . '</a><br>';
+                $tweet = $githubFullName . ' pushed code to ' . $url;
+                //$this->tweet($tweet);
             }
         }
+        $this->tweet($tweet);
+        echo $tweet . '<br>';
         die;
     }
     
     public function tweetAction()
     {
+        $tweet = 'Working on my Uranium application.';
+        $this->tweet($tweet);
+        echo $tweet . '<br>';
+        die;
+    }
+    
+    private function tweet($tweet)
+    {
         $config = $this->getServiceLocator()->get('config')['twitter'];
         $twitter = new Twitter($config);
-        $twitter->statuses->update('Hello world!');
-        die('ok');
+        $twitter->statuses->update($tweet);
     }
 }
