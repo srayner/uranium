@@ -11,5 +11,54 @@
  * credentials from accidentally being committed into version control.
  */
 
+/* --------------- Enter your local enviroment settings here -----------------*/
+$config = array(
+    'proxy_host'              => null,
+    'proxy_port'              => null,
+    'github_account_name'     => '',
+    'github_full_name'        => '',
+    'twitter_consumer_key'    => '',
+    'twitter_consumer_secret' => '',
+    'twitter_access_token'    => '',
+    'twitter_access_secret'   => '',
+);
+
+/* -------------- DO NOT MAKE CHANGES BELOW THIS LINE ------------------------*/
+
 return array(
+    
+    // Github config
+    'http_client_config' => array(
+        'adapter'    => 'Zend\Http\Client\Adapter\Curl',
+        'proxy_host' => $config['proxy_host'],
+        'proxy_port' => $config['proxy_port'],
+        'curloptions' => array(
+           CURLOPT_SSL_VERIFYPEER => false,
+           CURLOPT_SSL_VERIFYHOST => false,
+        ),
+    ),
+    'github_account_name' => $config['github_account_name'],
+    'github_full_name' => $config['github_full_name'],
+    
+    // Twitter config
+    'twitter' => array(
+        'access_token' => array(
+            'token'  => $config['twitter_access_token'],
+            'secret' => $config['twitter_access_secret'],
+        ),
+        'oauth_options' => array(
+            'consumerKey' => $config['twitter_consumer_key'],
+            'consumerSecret' => $config['twitter_consumer_secret'],
+        ),
+        'http_client_options' => array(
+            'adapter' => 'Zend\Http\Client\Adapter\Curl',
+            'proxy_host' => $config['proxy_host'],
+            'proxy_port' => $config['proxy_port'],
+            'curloptions' => array(
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+            ),
+        ),
+    ),
+    
 );
