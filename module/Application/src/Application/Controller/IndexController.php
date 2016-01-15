@@ -50,6 +50,7 @@ class IndexController extends AbstractActionController
         $response->setStatusCode(200);
         $response->setContent('ok.');
         return $response;
+        ///
     }
     
     public function eventsAction()
