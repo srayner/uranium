@@ -52,6 +52,17 @@ return array(
                     ),
                 ),
             ),
+            
+            'webhook' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/webhook',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'webhook',
+                    ),
+                ),    
+            ),
         ),
     ),
     'service_manager' => array(

@@ -36,6 +36,22 @@ class IndexController extends AbstractActionController
         die;
     }
     
+    public function webhookAction()
+    {
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            $data = $request->getPost();
+            $fp = fopen('data/myfile.txt', 'w');
+            fwrite($fp, $data['type'] . PHP_EOL);
+            fclose($fp);
+        }
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent('ok.');
+        return $response;
+    }
+    
     public function eventsAction()
     {
         // Set the configuration parameters
