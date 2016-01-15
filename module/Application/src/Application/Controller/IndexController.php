@@ -41,16 +41,15 @@ class IndexController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost())
         {
-            $data = $request->getPost();
-            $fp = fopen('data/myfile.txt', 'w');
-            fwrite($fp, $data['type'] . PHP_EOL);
-            fclose($fp);
+            $githubFullName = $this->getServiceLocator()->get('config')['github_full_name'];
+            $url = "https://github.com/srayner/uranium";
+            $tweet = $githubFullName . ' pushed code to ' . $url;
+            $this->tweet($tweet);
         }
         $response = $this->getResponse();
         $response->setStatusCode(200);
         $response->setContent('ok.');
         return $response;
-        ///
     }
     
     public function eventsAction()
