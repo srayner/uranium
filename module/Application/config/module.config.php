@@ -63,6 +63,17 @@ return array(
                     ),
                 ),    
             ),
+            
+            'twitter' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/twitter',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Twitter',
+                        'action'     => 'index',
+                    ),
+                ),    
+            ),
         ),
     ),
     'service_manager' => array(
@@ -86,7 +97,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+            'Application\Controller\Index' => Controller\IndexController::class,
+            'Application\Controller\Twitter' => Controller\TwitterController::class,
         ),
     ),
     'view_manager' => array(
