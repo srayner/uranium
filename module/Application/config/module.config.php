@@ -94,7 +94,9 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => array(
-            'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'translator'   => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'github_form'  => 'Application\Form\GithubFormFactory',
+            'twitter_form' => 'Application\Form\TwitterFormFactory',
         ),
     ),
     'translator' => array(

@@ -1,1 +1,37 @@
 <h1>Twitter Account Settings</h1>
+
+<?php
+    $form = $this->form;
+    echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+<?php
+    $element = $form->get('twitter_consumer_key');
+    echo $this->formRow($element);
+?>
+</div>
+<div class="form-group">
+<?php
+    $element = $form->get('twitter_consumer_secret');
+    echo $this->formRow($element);
+?>
+</div>
+<div class="form-group">
+<?php
+    $element = $form->get('twitter_access_token');
+    echo $this->formRow($element);
+?>
+</div>
+<div class="form-group">
+<?php
+    $element = $form->get('twitter_access_secret');
+    echo $this->formRow($element);
+?>
+</div>
+<?php
+    $element = $form->get('send');
+?>
+<?php
+    echo $this->formRow($element);
+    echo $this->form()->closeTag();
+?>

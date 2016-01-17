@@ -1,1 +1,25 @@
 <h1>Github Account Settings</h1>
+
+<?php
+    $form = $this->form;
+    echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+<?php
+    $element = $form->get('github_account_name');
+    echo $this->formRow($element);
+?>
+</div>
+<div class="form-group">
+<?php
+    $element = $form->get('github_full_name');
+    echo $this->formRow($element);
+?>
+</div>
+<?php
+    $element = $form->get('send');
+?>
+<?php
+    echo $this->formRow($element);
+    echo $this->form()->closeTag();
+?>

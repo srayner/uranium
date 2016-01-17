@@ -9,6 +9,9 @@ class GithubController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $form = $this->getServiceLocator()->get('github_form');
+        return new ViewModel(array(
+            'form' => $form
+        ));
     }
 }

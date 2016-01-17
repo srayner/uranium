@@ -9,6 +9,9 @@ class TwitterController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $form = $this->getServiceLocator()->get('twitter_form');
+        return new ViewModel(array(
+            'form' => $form
+        ));
     }
 }
