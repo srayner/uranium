@@ -64,6 +64,17 @@ return array(
                 ),    
             ),
             
+            'github' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/github',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Github',
+                        'action'     => 'index',
+                    ),
+                ),    
+            ),
+            
             'twitter' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -74,6 +85,7 @@ return array(
                     ),
                 ),    
             ),
+            
         ),
     ),
     'service_manager' => array(
@@ -97,8 +109,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class,
+            'Application\Controller\Index'   => Controller\IndexController::class,
             'Application\Controller\Twitter' => Controller\TwitterController::class,
+            'Application\Controller\Github'  => Controller\GithubController::class,
         ),
     ),
     'view_manager' => array(
