@@ -11,7 +11,7 @@ class GithubFilter extends InputFilter
         // github account name
         $this->add(array(
             'name'       => 'github_account_name',
-            'required'   => true,
+            'required'   => false,
             'validators' => array(
                 array(
                     'name'    => 'StringLength',
@@ -28,7 +28,7 @@ class GithubFilter extends InputFilter
          // github full name
         $this->add(array(
             'name'       => 'github_full_name',
-            'required'   => true,
+            'required'   => false,
             'validators' => array(
                 array(
                     'name'    => 'StringLength',
