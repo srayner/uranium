@@ -10,6 +10,9 @@ class TwitterController extends AbstractActionController
     public function indexAction()
     {
         $form = $this->getServiceLocator()->get('twitter_form');
+        $service = $this->getServiceLocator()->get('settings_service');
+        $twitter = $service->load('twitter');
+        $form->setData($twitter);
         $request = $this->getRequest();
         if($request->isPost()){
             $form->setData($request->getPost());
@@ -17,7 +20,7 @@ class TwitterController extends AbstractActionController
             {
                 $data = $form->getData();
                 unset($data['send']);
-                $service = $this->getServiceLocator()->get('settings_service');
+                
                 $service->persist('twitter', $data);
                 return $this->redirect()->toRoute('home');
             }

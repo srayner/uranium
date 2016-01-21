@@ -10,6 +10,9 @@ class GithubController extends AbstractActionController
     public function indexAction()
     {
         $form = $this->getServiceLocator()->get('github_form');
+        $service = $this->getServiceLocator()->get('settings_service');
+        $github = $service->load('github');
+        $form->setData($github);
         $request = $this->getRequest();
         if($request->isPost()){
             $form->setData($request->getPost());
@@ -17,7 +20,7 @@ class GithubController extends AbstractActionController
             {
                 $data = $form->getData();
                 unset($data['send']);
-                $service = $this->getServiceLocator()->get('settings_service');
+                
                 $service->persist('github', $data);
                 return $this->redirect()->toRoute('home');
             }

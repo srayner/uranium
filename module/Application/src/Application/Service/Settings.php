@@ -14,7 +14,7 @@ class Settings
     public function load($name)
     {
         $filename = $this->path . '/' . $name . '.json';
-        return json_decode(file_get_contents($filename, false));
+        return json_decode(file_get_contents($filename, false), true);
     }
     
     public function persist($name, $value)
