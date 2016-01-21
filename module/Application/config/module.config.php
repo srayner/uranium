@@ -86,6 +86,17 @@ return array(
                 ),    
             ),
             
+            'quote' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/quote',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Twitter',
+                        'action'     => 'quote',
+                    ),
+                ),    
+            ),
+            
         ),
     ),
     'service_manager' => array(

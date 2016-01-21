@@ -43,7 +43,8 @@ class IndexController extends AbstractActionController
         {
             $githubFullName = $this->getServiceLocator()->get('config')['github_full_name'];
             $url = "https://github.com/srayner/uranium";
-            $tweet = $githubFullName . ' pushed code to ' . $url;
+            $quote = $this->quote();
+            $tweet = $githubFullName . ' pushed code to ' . $url . ' ' . $quote;
             $this->tweet($tweet);
         }
         $response = $this->getResponse();
@@ -88,5 +89,13 @@ class IndexController extends AbstractActionController
         $config = $this->getServiceLocator()->get('config')['twitter'];
         $twitter = new Twitter($config);
         $twitter->statuses->update($tweet);
+    }
+    
+    private function quote()
+    {
+        $service = $this->getServiceLocator()->get('settings_service');
+        $quotes = $service->load('quotes');
+        $key = array_rand($quotes, 1);
+        return $quotes[$key];
     }
 }

@@ -30,4 +30,14 @@ class TwitterController extends AbstractActionController
             'form' => $form
         ));
     }
+    
+    public function quoteAction()
+    {
+        $service = $this->getServiceLocator()->get('settings_service');
+        $quotes = $service->load('quotes');
+        $key = array_rand($quotes, 1);
+        return new ViewModel(array(
+            'quote' => $quotes[$key]
+        ));
+    }
 }
