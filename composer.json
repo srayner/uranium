@@ -9,7 +9,8 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.5",
-        "zendframework/zendframework": "~2.5",
-        "zendframework/zendservice-twitter": "^2.1"
+        "zendframework/zendframework": "2.5.1",
+        "zendframework/zendservice-twitter": "^2.1",
+        "srayner/civuser": "dev-master"
     }
 }
