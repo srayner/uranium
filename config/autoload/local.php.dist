@@ -13,6 +13,8 @@
 
 /* --------------- Enter your local enviroment settings here -----------------*/
 $config = array(
+    'db_username'             => 'username',
+    'db_password'             => 'password',
     'proxy_host'              => null,
     'proxy_port'              => null,
     'github_account_name'     => '',
@@ -58,6 +60,29 @@ return array(
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_SSL_VERIFYPEER => false,
             ),
+        ),
+    ),
+    
+    'civuser' => array(
+        
+        // Example of persistance config.
+        'persistance' => array(
+            'type' => 'dbtable',
+            'table' => 'user'
+        ),
+        
+        // Example of tbtable auth adapter
+        'adapter' => array(
+            'type'             => 'dbtable',
+            'table'            => 'user',
+            'identifier_field' => $config['db_username'],
+            'credential_field' => $config['db_password'],
+        ),
+        
+        
+        // Options
+        'profile_link' => array(
+            'class' => ""
         ),
     ),
     
