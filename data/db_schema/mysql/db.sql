@@ -10,3 +10,4 @@ ALTER TABLE USER ADD CONSTRAINT constr_identity UNIQUE (domain, username)
 
 insert into user(`id`, `domain`, `username`, `password`, `display_name`)
 values(1, 'local', 'admin', '$2y$10$Vc7ZbhWLeIeZ6mypeIpd6uBelDKlQ8wXgL2vkKbLS4L7Zz/KgJM02', 'Administrator');
+
