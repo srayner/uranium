@@ -75,14 +75,29 @@ return array(
         'adapter' => array(
             'type'             => 'dbtable',
             'table'            => 'user',
-            'identifier_field' => $config['db_username'],
-            'credential_field' => $config['db_password'],
+            'identifier_field' => 'username',
+            'credential_field' => 'password',
         ),
-        
-        
+       
         // Options
         'profile_link' => array(
             'class' => ""
+        ),
+    ),
+    
+    // ZendDb database connection.
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => function ($sm) use ($config) {
+                return new Zend\Db\Adapter\Adapter(array(
+                    'driver'    => 'pdo',
+                    'dsn'       => 'mysql:dbname=uranium;host=localhost',
+                    'database'  => 'uranium',
+                    'username'  => $config['db_username'],
+                    'password'  => $config['db_password'],
+                    'hostname'  => 'localhost',
+                ));
+            },
         ),
     ),
     
